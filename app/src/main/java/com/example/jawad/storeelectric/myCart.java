@@ -4,6 +4,9 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListView;
@@ -25,8 +28,8 @@ public class myCart extends Fragment {
         View view = inflater.inflate(R.layout.mycart, container, false);
         //view.setBackgroundResource(R.mipmap.wallpaper);
         ButterKnife.bind(this, view);
-
-        Utils.getMyCart(getContext(), expListCart, getFragmentManager());
+        setHasOptionsMenu(true);
+        Utils.getMyCart(getContext(), expListCart, getFragmentManager(),false);
         return view;
     }
 
@@ -34,5 +37,25 @@ public class myCart extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         ButterKnife.unbind(this);
+    }
+
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        //   super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.checkout, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.checkout:
+                onClick();
+                break;
+        }
+        return true;
+    }
+
+    private void onClick() {
+        Utils.getMyCart(getContext(), expListCart, getFragmentManager(),true);
+
     }
 }

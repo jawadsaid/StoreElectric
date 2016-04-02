@@ -16,7 +16,6 @@ import android.widget.LinearLayout;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 public class ContactUsActivity extends Fragment {
 
@@ -48,7 +47,6 @@ public class ContactUsActivity extends Fragment {
         super.onDestroyView();
         ButterKnife.unbind(this);
     }
-    @OnClick(R.id.fab)
     public void onClick() {
         String message = emailBody.getText().toString();
         Intent email = new Intent(Intent.ACTION_SEND);
