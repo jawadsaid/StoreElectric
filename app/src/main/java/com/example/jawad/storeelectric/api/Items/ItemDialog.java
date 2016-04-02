@@ -17,6 +17,9 @@ import com.example.jawad.storeelectric.api.Utils;
 
 import it.sephiroth.android.library.picasso.Picasso;
 
+/**
+ * Created by jawad on 3/31/2016.
+ */
 public class ItemDialog extends android.support.v4.app.DialogFragment {
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {

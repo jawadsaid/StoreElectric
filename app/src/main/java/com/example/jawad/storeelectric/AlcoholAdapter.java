@@ -15,7 +15,9 @@ import java.util.List;
 
 import it.sephiroth.android.library.picasso.Picasso;
 
-
+/**
+ * Created by jawad on 3/30/2016.
+ */
 public class AlcoholAdapter extends BaseExpandableListAdapter {
     private Context ctx;
     private HashMap<String, List<Item>> Alcohol_Category;
