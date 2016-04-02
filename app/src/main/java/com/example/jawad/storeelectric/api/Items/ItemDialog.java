@@ -2,7 +2,6 @@ package com.example.jawad.storeelectric.api.Items;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.app.DialogFragment;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -18,10 +17,7 @@ import com.example.jawad.storeelectric.api.Utils;
 
 import it.sephiroth.android.library.picasso.Picasso;
 
-/**
- * Created by jawad on 3/31/2016.
- */
-public class ItemDialog extends DialogFragment {
+public class ItemDialog extends android.support.v4.app.DialogFragment {
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         //return super.onCreateDialog(savedInstanceState);
@@ -62,7 +58,7 @@ public class ItemDialog extends DialogFragment {
                 int quantityItem=Integer.parseInt(editText.getText().toString());
                 if(quantityItem>0) {
                     int finalprice = price * quantityItem;
-                    Utils.addToCart(child, finalprice, quantityItem);
+                    Utils.addToCart(getContext(),child, finalprice, quantityItem);
                     Toast.makeText(getActivity(), "Your drink has been added successfully to your cart", Toast.LENGTH_SHORT).show();
                 }else
                     Toast.makeText(getActivity(), "Error , Check Quantity", Toast.LENGTH_SHORT).show();

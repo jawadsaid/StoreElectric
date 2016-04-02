@@ -1,7 +1,8 @@
 package com.example.jawad.storeelectric;
 
 import android.os.Bundle;
-import android.support.design.widget.CoordinatorLayout;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,21 +13,21 @@ import com.example.jawad.storeelectric.api.Utils;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class MainActivityListView extends android.support.v4.app.Fragment {
-    @Bind(R.id.exp_list)
-    ExpandableListView expList;
-    @Bind(R.id.listView)
-    CoordinatorLayout listView;
 
+public class myCart extends Fragment {
+
+    @Bind(R.id.expListCart)
+    ExpandableListView expListCart;
+
+    @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.activity_main_activity_list_view, container, false);
-        ButterKnife.bind(this, view);
+        View view = inflater.inflate(R.layout.mycart, container, false);
         view.setBackgroundResource(R.mipmap.wallpaper);
-        Utils.getItems(getContext(), expList, getFragmentManager());
+        ButterKnife.bind(this, view);
+        Utils.getMyCart(getContext(), expListCart, getFragmentManager());
         return view;
     }
-
 
     @Override
     public void onDestroyView() {

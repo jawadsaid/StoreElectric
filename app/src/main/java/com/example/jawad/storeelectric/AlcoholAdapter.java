@@ -15,9 +15,7 @@ import java.util.List;
 
 import it.sephiroth.android.library.picasso.Picasso;
 
-/**
- * Created by jawad on 3/30/2016.
- */
+
 public class AlcoholAdapter extends BaseExpandableListAdapter {
     private Context ctx;
     private HashMap<String, List<Item>> Alcohol_Category;
@@ -80,9 +78,9 @@ public class AlcoholAdapter extends BaseExpandableListAdapter {
     public View getChildView(int parent, int child,boolean lastChild, View convertview, ViewGroup parentView) {
         Item item = (Item) getChild(parent, child);
         String child_title = item.getName();
-        int id = item.getId();
         String description =item.getDescription();
         String price = item.getPrice().toString();
+        int quantity = item.getQuantity();
         if (convertview == null) {
             LayoutInflater inflater = (LayoutInflater) ctx.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertview = inflater.inflate(R.layout.child_layout, parentView, false);
@@ -90,7 +88,11 @@ public class AlcoholAdapter extends BaseExpandableListAdapter {
         TextView child_txtView = (TextView) convertview.findViewById(R.id.child_txt);
         TextView descriptionTxtV= (TextView) convertview.findViewById(R.id.status);
         TextView priceTxtView= (TextView) convertview.findViewById(R.id.txtPrice);
-        descriptionTxtV.setText(description.substring(0,20));
+        if(description !=null)
+            descriptionTxtV.setText(description.substring(0,20));
+        else{
+            descriptionTxtV.setText("Quantity: " +quantity);
+        }
         priceTxtView.setText(price+"₪");
         ImageView imageView = (ImageView) convertview.findViewById(R.id.profile_pic);
         Picasso.with(ctx).load(url+item.getType()+"/"+item.getImage()).resize(100,100).placeholder(R.drawable.ic_not_found).into(imageView);

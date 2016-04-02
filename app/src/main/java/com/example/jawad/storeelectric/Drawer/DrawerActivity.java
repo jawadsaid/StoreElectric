@@ -22,6 +22,7 @@ import com.example.jawad.storeelectric.ContactUsActivity;
 import com.example.jawad.storeelectric.LoginActivity;
 import com.example.jawad.storeelectric.MainActivityListView;
 import com.example.jawad.storeelectric.R;
+import com.example.jawad.storeelectric.myCart;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -119,7 +120,7 @@ public class DrawerActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id ==  R.id.action_settings) {
             return true;
         }
 
@@ -138,11 +139,15 @@ public class DrawerActivity extends AppCompatActivity
                     replace(R.id.drawerLayout, new HomeFragment()).
                     commit();
         } else if (id == R.id.nav_gallery) {
-            Intent intent = new Intent(this, MainActivityListView.class);
-            startActivity(intent);
-        } else if (id == R.id.nav_slideshow) {
             getSupportFragmentManager().beginTransaction().
+                    replace(R.id.drawerLayout, new MainActivityListView()).
+                    commit();
+        } else if (id == R.id.nav_slideshow) {
+           /* getSupportFragmentManager().beginTransaction().
                     replace(R.id.drawerLayout, new RecievedMailFragment()).
+                    commit();*/
+            getSupportFragmentManager().beginTransaction().
+                    replace(R.id.drawerLayout, new myCart()).
                     commit();
         } else if (id == R.id.nav_manage) {
             getSupportFragmentManager().beginTransaction().
