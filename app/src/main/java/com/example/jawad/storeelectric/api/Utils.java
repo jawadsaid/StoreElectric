@@ -263,7 +263,6 @@ public class Utils {
                     out.close();
                     InputStream in = con.getInputStream();
                     InputStreamReader streamReader = new InputStreamReader(in);
-                    System.out.println("teeeees");
                     Gson gson = new Gson();
                     ListOfItems items= gson.fromJson(streamReader,ListOfItems.class);
                     con.disconnect();
@@ -308,13 +307,42 @@ public class Utils {
             }
 
             @Override
-            protected void onPostExecute(HashMap<String,List<Item>> AlcoholCategory) {
+            protected void onPostExecute(final HashMap<String,List<Item>> AlcoholCategory) {
                 if (AlcoholCategory == null)
                     return;
                 final ArrayList<String> Alcohol_list = new ArrayList<>(AlcoholCategory.keySet());
                 Collections.sort(Alcohol_list);
                 AlcoholAdapter adapter = new AlcoholAdapter(context, AlcoholCategory, Alcohol_list);
                 expandableListView.setAdapter(adapter);
+                expandableListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+                    @Override
+                    public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
+                        ItemDialog dialog = new ItemDialog();
+                        // Item item = AlcoholCategory.get(groupPosition).get(childPosition);
+                        Item item = AlcoholCategory.get(Alcohol_list.get(groupPosition)).get(childPosition);
+
+                        String name = item.getName();
+                        //String description = item.getDescription();
+                        String image = item.getImage();
+                        //String type = item.getType();
+                        int price = item.getPrice();
+                        //int parentID = item.getTypeid();
+                        //int childID = item.getId();
+                        Bundle bundle = new Bundle();
+                        bundle.putString("name", name);
+                        bundle.putString("type", type);
+                        bundle.putString("desc", description);
+                        bundle.putString("image", image);
+                        bundle.putInt("price", price);
+                        bundle.putInt("child", childID);
+                        bundle.putInt("parent", parentID);
+                        dialog.setArguments(bundle);
+                        dialog.show(fragmentManager, "Test");
+                        return true;
+                    }
+                });
+
+
             }
         }.execute();
     }
