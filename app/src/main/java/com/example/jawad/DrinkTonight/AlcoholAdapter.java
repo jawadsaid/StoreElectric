@@ -1,4 +1,4 @@
-package com.example.jawad.storeelectric;
+package com.example.jawad.DrinkTonight;
 
 import android.content.Context;
 import android.support.v4.app.FragmentManager;
@@ -10,8 +10,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.jawad.storeelectric.api.Items.Item;
-import com.example.jawad.storeelectric.api.Utils;
+import com.example.jawad.DrinkTonight.api.Items.Item;
+import com.example.jawad.DrinkTonight.api.Utils;
 
 import java.util.HashMap;
 import java.util.List;
@@ -22,12 +22,12 @@ import it.sephiroth.android.library.picasso.Picasso;
  * Created by jawad on 3/30/2016.
  */
 public class AlcoholAdapter extends BaseExpandableListAdapter {
-    private Context ctx;
-    private HashMap<String, List<Item>> Alcohol_Category;
-    List<String> Alcohol_List;
-    FragmentManager manager;
     public static boolean Visible=false;
     public static String url = "https://collegeserver1.herokuapp.com/images/";
+    List<String> Alcohol_List;
+    FragmentManager manager;
+    private Context ctx;
+    private HashMap<String, List<Item>> Alcohol_Category;
 
     public AlcoholAdapter(Context ctx, HashMap<String, List<Item>> alcohol_Category, List<String> alcohol_List, FragmentManager manager) {
         this.ctx = ctx;

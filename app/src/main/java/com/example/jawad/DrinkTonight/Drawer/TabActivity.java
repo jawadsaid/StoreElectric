@@ -1,7 +1,6 @@
-package com.example.jawad.storeelectric.Drawer;
+package com.example.jawad.DrinkTonight.Drawer;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -9,7 +8,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.example.jawad.storeelectric.R;
+import com.example.jawad.DrinkTonight.R;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -22,9 +21,6 @@ public class TabActivity extends AppCompatActivity {
     TabLayout tabLayout;
     @Bind(R.id.viewPager)
     ViewPager viewPager;
-    @Bind(R.id.fab)
-    FloatingActionButton fab;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

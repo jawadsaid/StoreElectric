@@ -1,12 +1,10 @@
-package com.example.jawad.storeelectric.Drawer;
+package com.example.jawad.DrinkTonight.Drawer;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -14,15 +12,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 
-import com.example.jawad.storeelectric.ContactUsActivity;
-import com.example.jawad.storeelectric.LoginActivity;
-import com.example.jawad.storeelectric.MainActivityListView;
-import com.example.jawad.storeelectric.R;
-import com.example.jawad.storeelectric.myCart;
+import com.example.jawad.DrinkTonight.ContactUsActivity;
+import com.example.jawad.DrinkTonight.LoginActivity;
+import com.example.jawad.DrinkTonight.MainActivityListView;
+import com.example.jawad.DrinkTonight.R;
+import com.example.jawad.DrinkTonight.myCart;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -34,8 +30,6 @@ public class DrawerActivity extends AppCompatActivity
     Toolbar toolbar;
     @Bind(R.id.drawerLayout)
     RelativeLayout drawerLayout;
-    @Bind(R.id.fab)
-    FloatingActionButton fab;
     @Bind(R.id.nav_view)
     NavigationView navView;
 
@@ -52,15 +46,6 @@ public class DrawerActivity extends AppCompatActivity
                 commit();
 
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -73,7 +58,7 @@ public class DrawerActivity extends AppCompatActivity
       //  startActivity(intent);
 
       //  Utils.getItems(this, expList);
-        checkLogin();
+       checkLogin();
     }
 
 
@@ -85,12 +70,6 @@ public class DrawerActivity extends AppCompatActivity
         if(username==null){
             Intent intent = new Intent(this,LoginActivity.class);
             startActivity(intent);
-        }
-        else {
-        //    if(preferences.getString("name",null) ==null)
-                Toast.makeText(this, "Hello ", Toast.LENGTH_SHORT).show();
-        //    else
-        //    Toast.makeText(this, "Hello " + preferences.getString("name", "username"), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -143,9 +122,6 @@ public class DrawerActivity extends AppCompatActivity
                     replace(R.id.drawerLayout, new MainActivityListView()).
                     commit();
         } else if (id == R.id.nav_slideshow) {
-           /* getSupportFragmentManager().beginTransaction().
-                    replace(R.id.drawerLayout, new RecievedMailFragment()).
-                    commit();*/
             getSupportFragmentManager().beginTransaction().
                     replace(R.id.drawerLayout, new myCart()).
                     commit();
@@ -162,7 +138,7 @@ public class DrawerActivity extends AppCompatActivity
                     commit();
 
         } else if (id == R.id.logout) {
-            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);;
+            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
             SharedPreferences.Editor editor = preferences.edit();
             editor.clear();
             editor.commit();

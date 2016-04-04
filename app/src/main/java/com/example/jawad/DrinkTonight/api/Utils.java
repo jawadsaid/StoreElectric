@@ -1,4 +1,4 @@
-package com.example.jawad.storeelectric.api;
+package com.example.jawad.DrinkTonight.api;
 
 
 import android.content.Context;
@@ -13,14 +13,14 @@ import android.view.View;
 import android.widget.ExpandableListView;
 import android.widget.Toast;
 
-import com.example.jawad.storeelectric.AlcoholAdapter;
-import com.example.jawad.storeelectric.Drawer.DrawerActivity;
-import com.example.jawad.storeelectric.R;
-import com.example.jawad.storeelectric.api.Items.Item;
-import com.example.jawad.storeelectric.api.Items.ItemDialog;
-import com.example.jawad.storeelectric.api.Items.ListOfItems;
-import com.example.jawad.storeelectric.api.Login.UserExistJson;
-import com.example.jawad.storeelectric.myCart;
+import com.example.jawad.DrinkTonight.AlcoholAdapter;
+import com.example.jawad.DrinkTonight.Drawer.DrawerActivity;
+import com.example.jawad.DrinkTonight.R;
+import com.example.jawad.DrinkTonight.api.Items.Item;
+import com.example.jawad.DrinkTonight.api.Items.ItemDialog;
+import com.example.jawad.DrinkTonight.api.Items.ListOfItems;
+import com.example.jawad.DrinkTonight.api.Login.UserExistJson;
+import com.example.jawad.DrinkTonight.myCart;
 import com.google.gson.Gson;
 
 import java.io.DataOutputStream;
@@ -209,12 +209,7 @@ public class Utils {
                 AlcoholAdapter.Visible=false;
                 AlcoholAdapter adapter = new AlcoholAdapter(context, AlcoholCategory, Alcohol_list);
                 expList.setAdapter(adapter);
-                expList.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
-                    @Override
-                    public void onGroupExpand(int groupPosition) {
-                        Toast.makeText(context, Alcohol_list.get(groupPosition) + "Is Expanded", Toast.LENGTH_SHORT).show();
-                    }
-                });
+
 
 
                 expList.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {

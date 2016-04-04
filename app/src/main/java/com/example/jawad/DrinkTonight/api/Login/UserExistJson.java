@@ -1,4 +1,4 @@
-package com.example.jawad.storeelectric.api.Login;
+package com.example.jawad.DrinkTonight.api.Login;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

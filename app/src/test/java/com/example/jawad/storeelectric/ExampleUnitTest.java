@@ -1,4 +1,4 @@
-package com.example.jawad.storeelectric;
+package com.example.jawad.DrinkTonight;
 
 import org.junit.Test;
 

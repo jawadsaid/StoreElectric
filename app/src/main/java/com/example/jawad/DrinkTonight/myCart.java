@@ -1,4 +1,4 @@
-package com.example.jawad.storeelectric;
+package com.example.jawad.DrinkTonight;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListView;
 
-import com.example.jawad.storeelectric.api.Utils;
+import com.example.jawad.DrinkTonight.api.Utils;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;

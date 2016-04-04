@@ -1,4 +1,4 @@
-package com.example.jawad.storeelectric.Drawer;
+package com.example.jawad.DrinkTonight.Drawer;
 
 
 import android.os.Bundle;
@@ -7,7 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.jawad.storeelectric.R;
+import com.example.jawad.DrinkTonight.R;
 
 
 /**

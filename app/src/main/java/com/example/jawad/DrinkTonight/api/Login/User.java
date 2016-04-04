@@ -1,18 +1,9 @@
-package com.example.jawad.storeelectric.api.Login;
+package com.example.jawad.DrinkTonight.api.Login;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class User {
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                '}';
-    }
 
     @SerializedName("id")
 @Expose
@@ -23,6 +14,15 @@ private String username;
 @SerializedName("password")
 @Expose
 private String password;
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                '}';
+    }
 
 /**
 * 

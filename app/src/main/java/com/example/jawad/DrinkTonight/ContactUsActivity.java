@@ -1,9 +1,8 @@
-package com.example.jawad.storeelectric;
+package com.example.jawad.DrinkTonight;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -25,8 +24,6 @@ public class ContactUsActivity extends Fragment {
     EditText emailBody;
     @Bind(R.id.linearLayout1)
     LinearLayout linearLayout1;
-    @Bind(R.id.fab)
-    FloatingActionButton fab;
 
 
     @Nullable
@@ -70,6 +67,7 @@ public class ContactUsActivity extends Fragment {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.send_email:
+
                 onClick();
                 clear();
                 return true;

@@ -4,46 +4,48 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#95cbdebf"
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.example.jawad.storeelectric.LoginActivity"
+    tools:context="com.example.jawad.DrinkTonight.LoginActivity"
     tools:showIn="@layout/activity_login">
 
     <TextView
-        android:text="Username"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="Username" />
 
     <EditText
         android:id="@+id/etUsername"
         android:layout_width="match_parent"
-        android:layout_marginBottom="10dp"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp" />
 
     <TextView
-        android:text="Password"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="Password" />
 
     <EditText
         android:id="@+id/etPassword"
         android:layout_width="match_parent"
-        android:inputType="textPassword"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
-        android:layout_height="wrap_content" />
+        android:inputType="textPassword" />
 
     <Button
         android:id="@+id/bLogin"
         android:layout_width="match_parent"
-        android:layout_marginBottom="10dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:background="#c9a4b47f"
         android:text="Login" />
 
     <TextView
-        android:text="Not User?"
-        android:layout_gravity="center_horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Not User?"
         android:textSize="20dp"
         android:textStyle="bold"/>
 
@@ -52,8 +54,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
+        android:background="#c9a4b47f"
         android:text="Register Here"
-
        />
 
 </LinearLayout>

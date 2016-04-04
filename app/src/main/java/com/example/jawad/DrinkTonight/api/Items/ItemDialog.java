@@ -1,4 +1,4 @@
-package com.example.jawad.storeelectric.api.Items;
+package com.example.jawad.DrinkTonight.api.Items;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -11,9 +11,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.jawad.storeelectric.AlcoholAdapter;
-import com.example.jawad.storeelectric.R;
-import com.example.jawad.storeelectric.api.Utils;
+import com.example.jawad.DrinkTonight.AlcoholAdapter;
+import com.example.jawad.DrinkTonight.R;
+import com.example.jawad.DrinkTonight.api.Utils;
 
 import it.sephiroth.android.library.picasso.Picasso;
 
@@ -45,6 +45,8 @@ public class ItemDialog extends android.support.v4.app.DialogFragment {
         child_txtView.setText(name);
         descriptionTxtV.setText(desc);
         priceTxtView.setText(price + getString(R.string.newShekel));
+        if(type.equalsIgnoreCase("wine" + AlcoholAdapter.url+type+"/"+image));
+            System.out.println("test :");
         Picasso.with(getContext()).load(AlcoholAdapter.url+type+"/"+image).resize(100,100).placeholder(R.drawable.ic_not_found).into(imageView);
         builder.setView(view);
         builder.setNegativeButton(R.string.Cancel, new DialogInterface.OnClickListener() {
