@@ -397,6 +397,57 @@ public class Utils {
                         AlcoholCategory.put("Vodka", Vodka);
                     if (Other.size() > 0)
                         AlcoholCategory.put("Other", Other);
+                    if(checkOut){
+                        {
+                            StringBuilder message=new StringBuilder("Hi Jawad , I need this drinks : ");
+                            int totalPrice=0;
+                            final ArrayList<String> Alcohol_list = new ArrayList<>(AlcoholCategory.keySet());
+                            for (String parent : Alcohol_list) {
+                                ArrayList<Item> itemArr = (ArrayList<Item>) AlcoholCategory.get(parent);
+                                for (Item item : itemArr) {
+                                    message.append("Bottle : " +item.getName() + " ");
+                                    message.append("Quantity : " +item.getQuantity() + " ");
+                                    message.append("And , " + " ");
+                                    totalPrice+=item.getPrice();
+                                }
+                            }
+                            if(totalPrice==0){
+                                Toast.makeText(context, "Your cart is empty", Toast.LENGTH_SHORT).show();
+                            }else {
+                                String phoneNo = "+972548082189";
+                                Intent sendIntent = new Intent(Intent.ACTION_SENDTO);
+                                String msg = message.substring(0, message.length() - 7).toString() + " Total : " + totalPrice + "₪";
+                                sendIntent.setData(Uri.parse("smsto:" + Uri.encode("0548082189")));
+                                sendIntent.putExtra("sms_body", msg);
+                                url = new URL("https://collegeserver1.herokuapp.com/checkout");
+                                con = (HttpURLConnection) url.openConnection();
+                                //outPut Stream
+                                con.setDoOutput(true);
+                                con.setRequestMethod("POST");
+                                out = new DataOutputStream( con.getOutputStream());
+
+                                urlParams=String.format("username=%s",username);
+                                out.writeBytes(urlParams);
+                                out.flush();
+                                out.close();
+
+                                in = con.getInputStream();
+                                streamReader = new InputStreamReader(in);
+                                int data= streamReader.read();
+                                while(data != -1){
+                                    char theChar = (char) data;
+                                    data = streamReader.read();
+                                }
+                                streamReader.close();
+                                con.disconnect();
+                                in.close();
+                                streamReader.close();
+                                context.startActivity(Intent.createChooser(sendIntent, "Send a Msg"));
+
+
+                            }
+                        }
+                    }
                     return AlcoholCategory;
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -414,31 +465,6 @@ public class Utils {
                     return;
                 final ArrayList<String> Alcohol_list = new ArrayList<>(AlcoholCategory.keySet());
                 Collections.sort(Alcohol_list);
-                if(checkOut){
-                    StringBuilder message=new StringBuilder("Hi Jawad , I need this drinks : ");
-                    int totalPrice=0;
-                    for (String parent : Alcohol_list) {
-                        ArrayList<Item> itemArr = (ArrayList<Item>) AlcoholCategory.get(parent);
-                        for (Item item : itemArr) {
-                            message.append("Bottle : " +item.getName() + " ");
-                            message.append("Quantity : " +item.getQuantity() + " ");
-                            message.append("And , " + " ");
-                            totalPrice+=item.getPrice();
-                        }
-                    }
-
-                    String phoneNo ="+972548082189";
-                    Intent sendIntent = new Intent(Intent.ACTION_SENDTO);
-                    String msg = message.substring(0,message.length()-7).toString()+ " Total : " + totalPrice;
-                    sendIntent.setData(Uri.parse("smsto:" + Uri.encode("0548082189")));
-                    sendIntent.putExtra("sms_body", msg);
-                    context.startActivity(sendIntent);
-
-
-
-
-                    return;
-                }
                 AlcoholAdapter.Visible = true;
                 AlcoholAdapter adapter = new AlcoholAdapter(context, AlcoholCategory, Alcohol_list,manager);
                 expandableListView.setAdapter(adapter);

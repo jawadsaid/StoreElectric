@@ -14,20 +14,22 @@
             android:id="@+id/nav_slideshow"
             android:icon="@drawable/ic_menu_slideshow"
             android:title="My Cart" />
-        <item
+     <!--   <item
             android:id="@+id/nav_manage"
             android:icon="@drawable/ic_menu_manage"
             android:title="Tools" />
+    -->
     </group>
 
     <item android:title="Communicate">
         <menu>
             <item
-                android:id="@+id/nav_share"
+                android:id="@+id/contact_us"
                 android:icon="@drawable/ic_menu_share"
                 android:title="Contact Us" />
+
             <item
-                android:id="@+id/nav_send"
+                android:id="@+id/logout"
                 android:icon="@drawable/ic_exit_to_app_24dp"
                 android:title="Logout" />
         </menu>

@@ -149,11 +149,11 @@ public class DrawerActivity extends AppCompatActivity
             getSupportFragmentManager().beginTransaction().
                     replace(R.id.drawerLayout, new myCart()).
                     commit();
-        } else if (id == R.id.nav_manage) {
+        } /*else if (id == R.id.nav_manage) {
             getSupportFragmentManager().beginTransaction().
                     replace(R.id.drawerLayout, new TabsFragment()).
                     commit();
-        } else if (id == R.id.nav_share) {
+        } */else if (id == R.id.contact_us) {
           //  Intent intent = new Intent(this, ContactUsActivity.class);
           //  startActivity(intent);
 
@@ -161,7 +161,7 @@ public class DrawerActivity extends AppCompatActivity
                     replace(R.id.drawerLayout, new ContactUsActivity()).
                     commit();
 
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.logout) {
             SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);;
             SharedPreferences.Editor editor = preferences.edit();
             editor.clear();
