@@ -162,7 +162,6 @@ public class Utils {
                 try {
                     url = new URL("https://collegeserver1.herokuapp.com/db/items");
                     HttpURLConnection con = (HttpURLConnection) url.openConnection();
-
                     InputStream in = con.getInputStream();
                     InputStreamReader streamReader = new InputStreamReader(in);
                     Gson gson = new Gson();
@@ -256,7 +255,6 @@ public class Utils {
                     //outPut Stream
                     con.setDoOutput(true);
                     con.setRequestMethod("POST");
-                    //OutputStream out =
                     SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
                     String username = preferences.getString("username", null);
                     String urlParams=String.format("username=%s&child=%d&price=%d&quantity=%d",username,child,finalprice,quantity);
@@ -274,12 +272,6 @@ public class Utils {
                         data = streamReader.read();
                     }
                     streamReader.close();
-
-                   // Gson gson = new Gson();
-                    //  UserResponse userResponse = gson.fromJson(streamReader, UserResponse.class);
-
-                   // UserExistJson existJson = gson.fromJson(streamReader,UserExistJson.class);
-                    //return existJson;
 
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -394,7 +386,7 @@ public class Utils {
                         AlcoholCategory.put("Other", Other);
                     if(checkOut){
                         {
-                            StringBuilder message=new StringBuilder("Hi Jawad , I need this drinks : ");
+                            StringBuilder message=new StringBuilder("Hi Jawad , I need these drinks : ");
                             int totalPrice=0;
                             final ArrayList<String> Alcohol_list = new ArrayList<>(AlcoholCategory.keySet());
                             for (String parent : Alcohol_list) {
@@ -409,7 +401,6 @@ public class Utils {
                             if(totalPrice==0){
                                 Toast.makeText(context, "Your cart is empty", Toast.LENGTH_SHORT).show();
                             }else {
-                                String phoneNo = "+972548082189";
                                 Intent sendIntent = new Intent(Intent.ACTION_SENDTO);
                                 String msg = message.substring(0, message.length() - 7).toString() + " Total : " + totalPrice + "₪";
                                 sendIntent.setData(Uri.parse("smsto:" + Uri.encode("0548082189")));

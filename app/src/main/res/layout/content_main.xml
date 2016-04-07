@@ -3,9 +3,10 @@
     android:id="@+id/linearLayout1"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+    android:background="#95cbdebf"
     android:orientation="vertical"
-    android:paddingTop="55dp"
-    android:paddingLeft="10dp">
+    android:paddingLeft="10dp"
+    android:paddingTop="55dp">
 
 
     <TextView

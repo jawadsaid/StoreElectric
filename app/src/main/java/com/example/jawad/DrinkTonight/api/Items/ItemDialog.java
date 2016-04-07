@@ -49,17 +49,15 @@ public class ItemDialog extends android.support.v4.app.DialogFragment {
             System.out.println("test :");
         Picasso.with(getContext()).load(AlcoholAdapter.url+type+"/"+image).resize(100,100).placeholder(R.drawable.ic_not_found).into(imageView);
         builder.setView(view);
-        builder.setNegativeButton(R.string.Cancel, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                Toast.makeText(getActivity(), "Thea", Toast.LENGTH_SHORT).show();
-            }
-        });
         builder.setPositiveButton(R.string.Add, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 EditText editText = (EditText) view.findViewById(R.id.edQuantityItem);
             //    Toast.makeText(getActivity(), "Quantity: " + editText.getText().toString(), Toast.LENGTH_SHORT).show();
+                if(editText.getText().toString().length()>8)
+                    Toast.makeText(getContext(), "OverFlow ", Toast.LENGTH_SHORT).show();
+                else
+                {
                 int quantityItem=Integer.parseInt(editText.getText().toString());
                 if(quantityItem>0) {
                     int finalprice = price * quantityItem;
@@ -67,6 +65,7 @@ public class ItemDialog extends android.support.v4.app.DialogFragment {
                     Toast.makeText(getActivity(), "Your drink has been added successfully to your cart", Toast.LENGTH_SHORT).show();
                 }else
                     Toast.makeText(getActivity(), "Error , Check Quantity", Toast.LENGTH_SHORT).show();
+            }
             }
         });
        // Dialog dialog = builder.create();
