@@ -1,6 +1,7 @@
 package com.example.jawad.DrinkTonight.api;
 
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -38,6 +39,22 @@ import java.util.List;
  */
 public class Utils {
     //Login
+
+    public static HttpURLConnection connectToServer(URL url){
+
+        try {
+            HttpURLConnection con= (HttpURLConnection) url.openConnection();
+            //outPut Stream
+            con.setDoOutput(true);
+            con.setRequestMethod("POST");
+            return con;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        //OutputStream out =
+        return null;
+    }
+
     public static String connection(final Context context, final String userName,String password){
 
         new AsyncTask<String, Void, UserExistJson>() {
@@ -47,12 +64,12 @@ public class Utils {
                 URL url = null;
                 try {
                     url = new URL("https://collegeserver1.herokuapp.com/api/existuserpost");
-                    HttpURLConnection con= (HttpURLConnection) url.openConnection();
-                    //outPut Stream
-                    con.setDoOutput(true);
-                    con.setRequestMethod("POST");
-                   //OutputStream out =
-
+//                    HttpURLConnection con= (HttpURLConnection) url.openConnection();
+//                    //outPut Stream
+//                    con.setDoOutput(true);
+//                    con.setRequestMethod("POST");
+//                   //OutputStream out =
+                    HttpURLConnection con = connectToServer(url);
                     String urlParams=String.format("username=%s&password=%s",params[0],params[1]);
                     DataOutputStream out = new DataOutputStream( con.getOutputStream());
                     out.writeBytes(urlParams);
@@ -104,12 +121,12 @@ public class Utils {
                 URL url = null;
                 try {
                     url = new URL("https://collegeserver1.herokuapp.com/api/insertuser");
-                    HttpURLConnection con= (HttpURLConnection) url.openConnection();
-                    //outPut Stream
-                    con.setDoOutput(true);
-                    con.setRequestMethod("POST");
-                    //OutputStream out =
-
+//                    HttpURLConnection con= (HttpURLConnection) url.openConnection();
+//                    //outPut Stream
+//                    con.setDoOutput(true);
+//                    con.setRequestMethod("POST");
+//                    //OutputStream out =
+                    HttpURLConnection con = connectToServer(url);
                     String urlParams=String.format("username=%s&password=%s&mail=%s",params[0],params[1],params[2]);
                     DataOutputStream out = new DataOutputStream( con.getOutputStream());
                     out.writeBytes(urlParams);
@@ -141,6 +158,7 @@ public class Utils {
                     editor.commit();
                     Intent intent = new Intent(context, DrawerActivity.class);
                     context.startActivity(intent);
+                    ((Activity)context).finish();
 
                 }else{
                     Toast.makeText(context, "Error , try again", Toast.LENGTH_SHORT).show();
